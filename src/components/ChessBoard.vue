@@ -9,6 +9,15 @@ import { Chessground } from 'chessground'
 import 'chessground/assets/chessground.base.css'
 import 'chessground/assets/chessground.cburnett.css'
 import type { Key } from 'chessground/types'
+import { sendPosition, initStockfish } from "@/engine/stockfish";
+
+onMounted(() => {
+  initStockfish();
+});
+
+function onPlayerMove(newFEN: string) {
+  sendPosition(newFEN);
+}
 
 // 生成合法格子
 const files = ['a','b','c','d','e','f','g','h']

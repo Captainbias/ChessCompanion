@@ -1,6 +1,5 @@
 <template>
   <div ref="board" style="width: 400px; height: 400px;"></div>
-  <ChessBoard/>
 </template>
 
 <script setup>
