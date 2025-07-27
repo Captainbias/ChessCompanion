@@ -1,5 +1,8 @@
 <template>
   <div ref="board" style="width: 400px; height: 400px;"></div>
+  <div>
+    <input type="number" v-model.number="depth" min="1" max="20" />
+  </div>
 </template>
 
 <script setup>
@@ -11,6 +14,8 @@ import 'chessground/assets/chessground.brown.css'
 import 'chessground/assets/chessground.cburnett.css'
 
 import stockfish from '@/stockfish-worker.js' // 注意路径要对应你的项目结构
+
+const depth = ref(15)  // default depth
 
 const board = ref(null)
 const game = new Chess()
@@ -52,7 +57,7 @@ function updateBoard() {
 
 function makeAIMove() {
   stockfish.postMessage('position fen ' + game.fen())
-  stockfish.postMessage('go depth 15')
+  stockfish.postMessage('go depth '+depth.value) //1-15 
 }
 
 stockfish.onmessage = (event) => {
