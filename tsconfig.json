@@ -3,14 +3,25 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
+    "skipLibCheck": true,
     "strict": true,
     "jsx": "preserve",
-    "esModuleInterop": true,
     "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "types": ["vite/client"]
   },
-  "include": ["src"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/shims-vue.d.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
 }
